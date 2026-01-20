@@ -1,0 +1,81 @@
+# =========================
+# Node / Package managers
+# =========================
+node_modules/
+.pnpm-store/
+.pnpm-debug.log*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# =========================
+# Build outputs
+# =========================
+dist/
+build/
+.out/
+.cache/
+.esbuild/
+
+# =========================
+# TypeScript
+# =========================
+*.tsbuildinfo
+
+# =========================
+# Vite
+# =========================
+.vite/
+
+# =========================
+# Environment variables
+# =========================
+.env
+.env.*
+!.env.example
+
+# =========================
+# Logs
+# =========================
+logs/
+*.log
+
+# =========================
+# OS / Editor
+# =========================
+.DS_Store
+Thumbs.db
+
+# Windows
+desktop.ini
+
+# VS Code
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# =========================
+# Git
+# =========================
+.git-rewrite/
+.git-credentials
+
+# =========================
+# Coverage / Tests
+# =========================
+coverage/
+
+# =========================
+# Storybook / Docs (ileride eklersen)
+# =========================
+storybook-static/
+docs/.cache/
+
+# =========================
+# Temporary / Backup
+# =========================
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
