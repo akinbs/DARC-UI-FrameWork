@@ -3,31 +3,30 @@ import type { Responsive } from "../../core/types";
 import { resolveResponsive } from "../../core/resolveResponsive";
 import { useBreakpoint } from "../../hooks/useBreakpoint";
 
-export type GridProps = React.HTMLAttributes<HTMLDivElement> & {
-  columns?: Responsive<number>;
+export type InlineProps = React.HTMLAttributes<HTMLDivElement> & {
   gap?: Responsive<number>;
   rowGap?: Responsive<number>;
   colGap?: Responsive<number>;
-  flow?: "row" | "column" | "row dense" | "column dense";
+  wrap?: boolean;
+  align?: React.CSSProperties["alignItems"];
+  justify?: React.CSSProperties["justifyContent"];
 };
 
-export function Grid({
-  columns = 12,
+export function Inline({
   gap = 12,
   rowGap,
   colGap,
-  flow = "row",
+  wrap = false,
+  align,
+  justify,
   style,
   ...rest
-}: GridProps) {
+}: InlineProps) {
   const bp = useBreakpoint();
 
- 
-  const cols = resolveResponsive(columns, bp, 12)!;
   const g = resolveResponsive(gap, bp, 12)!;
   const rg = resolveResponsive(rowGap, bp);
   const cg = resolveResponsive(colGap, bp);
-
 
   const finalRowGap = rg ?? g;
   const finalColGap = cg ?? g;
@@ -36,11 +35,13 @@ export function Grid({
     <div
       {...rest}
       style={{
-        display: "grid",
-        gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`,
+        display: "flex",
+        flexDirection: "row",
+        flexWrap: wrap ? "wrap" : "nowrap",
         rowGap: `${finalRowGap}px`,
         columnGap: `${finalColGap}px`,
-        gridAutoFlow: flow,
+        alignItems: align,
+        justifyContent: justify,
         ...style
       }}
     />

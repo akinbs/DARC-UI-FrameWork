@@ -26,12 +26,16 @@ export function Container({
     <div
       {...rest}
       style={{
+        boxSizing: "border-box",   
         width: "100%",
         maxWidth: `${containerSizes[s]}px`,
         paddingLeft: `${g}px`,
         paddingRight: `${g}px`,
         marginLeft: center ? "auto" : undefined,
         marginRight: center ? "auto" : undefined,
+        minWidth: 0,               
+        overflowX: "clip",         
+
         ...style
       }}
     />
